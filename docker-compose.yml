@@ -1,16 +1,17 @@
-version: '3'
+version: '3' # docker-composeのバージョンを指定
 services:
-  app1:
+  php:
+    container_name: "php"
     build:
-      context: ./app1
-    container_name: test_app1
+      context: ./app
     ports:
-      - 8080:8080
-  app2:
-    build: 
-      context: ./app2
-    container_name: test_app2
-    ports:
-      - 8081:8081
-
+      - '80:80'
+    volumes:
+      - ./app:/var/www/html
+  nginx: # サービス名
+    container_name: "nginx" # コンテナ名
+    build:
+      context: ./nginx
+    links: # ここで指定したサービス名とのリンクを作成する
+      - php # サービス名”php”と”nginx”を関連付ける
 
