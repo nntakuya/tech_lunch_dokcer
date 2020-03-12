@@ -13,8 +13,14 @@ docker-compose build --no-cache
 docker-compose up -d
 ```
 
+3. ブラウザをアクセス
 
-3. コンテナを停止
+```
+http://localhost/index.php
+```
+
+
+4. コンテナを停止
 
 ```shell
 docker-compose stop
